@@ -36,10 +36,10 @@ describe('TodoList', () => {
 
     expect(list.find('[data-testid="empty-state"]').exists()).toBeFalsy()
     expect(list.find('[data-testid="todo-list"]').exists()).toBeTruthy()
-    expect(list.find('[data-testid="todo-list"]').findAll('li').length).toBe(todos.length)
+    expect(list.find('[data-testid="todo-list"]').findAll('[data-testid^="todo-item-"]').length).toBe(todos.length)
   })
 
-  test('todoの未完了から完了への切り替えのテスト', async () => {
+  test('todoのtoggleイベントのテスト', async () => {
     const todos = [
       {
         id: '1',
@@ -57,13 +57,13 @@ describe('TodoList', () => {
     const list = await mountSuspended(TodoList, {
       props: { todos },
     })
-    await list.find('[data-testid="todo-checkbox-1"]').trigger('click')
+    await list.find(`[data-testid="todo-checkbox-${todos[0]?.id}"]`).trigger('click')
     const toggleEvent = list.emitted('toggle')
     expect(toggleEvent).toHaveLength(1)
     expect(toggleEvent?.[0]?.[0]).toBe(todos[0]?.id)
   })
 
-  test('todoの未完了から完了への切り替えのテスト', async () => {
+  test('削除ボタンのクリックのテスト', async () => {
     const todos = [
       {
         id: '1',
@@ -81,9 +81,9 @@ describe('TodoList', () => {
     const list = await mountSuspended(TodoList, {
       props: { todos },
     })
-    await list.find('[data-testid="todo-checkbox-1"]').trigger('click')
-    const toggleEvent = list.emitted('toggle')
-    expect(toggleEvent).toHaveLength(1)
-    expect(toggleEvent?.[0]?.[0]).toBe(todos[0]?.id)
+    await list.find(`[data-testid="todo-delete-button-${todos[0]?.id}"]`).trigger('click')
+    const removeEvent = list.emitted('remove')
+    expect(removeEvent).toHaveLength(1)
+    expect(removeEvent?.[0]?.[0]).toBe(todos[0]?.id)
   })
 })
