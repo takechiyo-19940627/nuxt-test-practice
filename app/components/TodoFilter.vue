@@ -14,7 +14,7 @@ const items = [
   { value: 'all', label: 'All' },
   { value: 'active', label: 'Active' },
   { value: 'completed', label: 'Completed' },
-] as const
+]
 </script>
 
 <template>
