@@ -76,6 +76,10 @@ describe('useTodos', () => {
       expect(todos.value[0]?.done).toBe(true)
       expect(todos.value[1]?.done).toBe(false)
       expect(todos.value[2]?.done).toBe(false)
+      toggleTodo(todos.value[0]?.id!)
+      expect(todos.value[0]?.done).toBe(false)
+      expect(todos.value[1]?.done).toBe(false)
+      expect(todos.value[2]?.done).toBe(false)
     })
   })
 
