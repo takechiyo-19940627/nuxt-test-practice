@@ -46,10 +46,6 @@ export function useTodos() {
     filter.value = next
   }
 
-  function clearCompleted(): void {
-    todos.value = todos.value.filter(t => !t.done)
-  }
-
   return {
     todos,
     filter,
@@ -60,6 +56,5 @@ export function useTodos() {
     toggleTodo,
     removeTodo,
     setFilter,
-    clearCompleted,
   }
 }
