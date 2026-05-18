@@ -102,7 +102,8 @@ describe('useTodos', () => {
 
   describe('filteredTodos', () => {
     test('全てのTODOを返す', () => {
-      const { addTodo, filteredTodos } = useTodos()
+      const { addTodo, filteredTodos, setFilter } = useTodos()
+      setFilter('all')
       addTodo('Todo1')
       addTodo('Todo2')
       addTodo('Todo3')
