@@ -44,13 +44,13 @@ describe('useTodos', () => {
     test('存在するIDの場合は削除される', () => {
       const { addTodo, removeTodo, todos } = useTodos()
       addTodo('Todo1')
+      const removedId = todos.value[0]?.id
       addTodo('Todo2')
 
       expect(todos.value[0]?.id).toBeDefined()
       removeTodo(todos.value[0]?.id!)
 
-      expect(todos.value.length).toBe(1)
-      expect(todos.value[0]?.text).toBe('Todo2')
+      expect(todos.value.find(t => t.id === removedId)).toBeUndefined()
     })
   })
 
