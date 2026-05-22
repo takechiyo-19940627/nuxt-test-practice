@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@nuxt/ui": "^4.7.1",
@@ -19,9 +21,14 @@
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.105",
     "@nuxt/test-utils": "^4.0.3",
+    "@storybook/vue3-vite": "^10.4.0",
+    "@vitejs/plugin-vue": "^6.0.7",
     "@vue/test-utils": "^2.4.10",
     "happy-dom": "^20.9.0",
     "playwright-core": "^1.59.1",
+    "storybook": "^10.4.0",
+    "unplugin-auto-import": "^21.0.0",
+    "unplugin-vue-components": "^32.0.0",
     "vitest": "^4.1.5"
   }
 }
